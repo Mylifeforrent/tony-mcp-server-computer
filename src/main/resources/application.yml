@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: tony-mcp-server-computer
+
+  ai:
+    mcp:
+      server:
+        name: ${spring.application.name}
+        version: 1.0.0
+
+  main:
+    banner-mode: off
+    web-application-type: none
+#### `banner-mode` 的作用
+#  `banner-mode` 用于控制 Spring Boot 应用启动时是否显示启动横幅（banner）。它有以下选项：
+#- `off`: 禁用启动横幅，不显示任何内容。
+#- `console`: 在控制台中显示启动横幅。
+#- `log`: 将启动横幅输出到日志文件。
+#
+#  在你的代码中，设置为 `off`，表示禁用启动横幅。
+#
+#---
+#
+#### `web-application-type` 的作用
+#  `web-application-type` 用于指定 Spring Boot 应用的类型。它有以下选项：
+#- `none`: 表示应用不是一个 Web 应用（例如 CLI 应用）。
+#- `servlet`: 表示应用是基于 Servlet 的传统 Web 应用。
+#- `reactive`: 表示应用是基于 Reactive Web 的应用。
+#
+#  在你的代码中，设置为 `none`，表示该应用是一个非 Web 应用，通常用于命令行工具或后台服务。表明这里是作为一个jar包被其他应用引用的，所以执行application的main方法是不会有反应的
+#https://juejin:  Spring AI 实现 STDIO和SSE MCP Server
+#  cn/post/7486845821575643176:
+
+
+logging:
+  pattern:
+    console:
+  file:
+    name: ${spring.application.name}.log
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
